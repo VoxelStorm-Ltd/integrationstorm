@@ -5,24 +5,27 @@
 
 namespace integrationstorm {
 
+template<typename T> struct state;
+
 template<typename T, template<typename> class DerivedT>
 class base {
 protected:
-  std::function<Vector3<T>(Vector3<T> const&, Vector3<T> const &, T time)> acceleration_func = [](Vector3<T> const &position __attribute__((__unused__)),
-                                                                                                  Vector3<T> const &velocity __attribute__((__unused__)),
-                                                                                                  T time                     __attribute__((__unused__))){
-    /// pointer to function that calculates acceleration at a given position, velocity and time
-    return Vector3<T>({0, 0, 0});
-  };
+  // pointer to function that calculates force and torque at a given state and time
+  std::function<void(state<T> const&, T, Vector3<T>&, Vector3<T>&)> force_func = [](state<T> const &thisstate __attribute__((__unused__)),
+                                                                                    T time                    __attribute__((__unused__)),
+                                                                                    Vector3<T> &force         __attribute__((__unused__)),
+                                                                                    Vector3<T> &torque        __attribute__((__unused__))){};
 
 protected:
   base();                                                                       // this base class is not to be instantiated
-protected:                                                                      // prevent destruction through base pointer
-  ~base();
+  ~base();                                                                      // prevent destruction through base pointer
 
 public:
-  Vector3<T> get_acceleration(Vector3<T> const &position, Vector3<T> const &velocity, T time) const;
-  void integrate(Vector3<T> &position, Vector3<T> &velocity, T time, T deltatime) const;
+  void set_force_func(std::function<void(state<T> const&, T, Vector3<T>&, Vector3<T>&)> new_func);
+
+  void get_force(state<T> const &thisstate, T time, Vector3<T> &force, Vector3<T> &torque) const;
+
+  void integrate(state<T> &thisstate, T time, T delta_time) const;
 };
 
 }

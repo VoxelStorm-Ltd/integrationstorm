@@ -46,7 +46,7 @@ public:
   ~runge_kutta_fehlberg_54();
 
 public:
-  void integrate(Vector3<T> &position, Vector3<T> &velocity, T time, T deltatime) const;
+  void integrate(state<T> &thisstate, T time, T delta_time) const;
 };
 
 }

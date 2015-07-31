@@ -1,4 +1,4 @@
-//#include "base.h"
+#include "base.h"
 #include "euler.h"
 #include "runge_kutta_4.h"
 #include "runge_kutta_fehlberg_54.h"
@@ -16,21 +16,25 @@ base<T, DerivedT>::~base() {
 }
 
 template<typename T, template<typename> class DerivedT>
-Vector3<T> base<T, DerivedT>::get_acceleration(Vector3<T> const &position,
-                                               Vector3<T> const &velocity,
-                                               T time) const {
-  /// CRTP polymorphic passthrough function
-  //static_cast<DerivedT<T> const*>(this)->get_acceleration(position, velocity, time);
-  return acceleration_func(position, velocity, time);
+void base<T, DerivedT>::set_force_func(std::function<void(state<T> const&, T, Vector3<T>&, Vector3<T>&)> new_func) {
+  force_func = new_func;
 }
 
 template<typename T, template<typename> class DerivedT>
-void base<T, DerivedT>::integrate(Vector3<T> &position,
-                                  Vector3<T> &velocity,
+void base<T, DerivedT>::get_force(state<T> const &thisstate,
                                   T time,
-                                  T deltatime) const {
+                                  Vector3<T> &force,
+                                  Vector3<T> &torque) const {
+  /// Execute the force function
+  this->force_func(thisstate, time, force, torque);
+}
+
+template<typename T, template<typename> class DerivedT>
+void base<T, DerivedT>::integrate(state<T> &thisstate, T time, T delta_time) const {
   /// CRTP polymorphic passthrough function
-  static_cast<DerivedT<T> const*>(this)->integrate(position, velocity, time, deltatime);
+  static_cast<DerivedT<T> const*>(this)->integrate(thisstate, time, delta_time);
+  // static version:
+  //DerivedT<T>::integrate(thisstate, time, delta_time);
 }
 
 // explicitly instantiate acceptable templates

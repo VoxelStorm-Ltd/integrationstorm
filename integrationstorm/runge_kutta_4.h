@@ -13,16 +13,11 @@ public:
   ~runge_kutta_4();
 
 public:
-  void integrate(Vector3<T> &position, Vector3<T> &velocity, T time, T deltatime) const;
+  void integrate(state<T> &thisstate, T time, T delta_time) const;
+
 private:
-  derivative<T> evaluate(Vector3<T> const &position_initial,
-                         Vector3<T> const &velocity_initial,
-                         T time) const;
-  derivative<T> evaluate(Vector3<T> const &position_initial,
-                         Vector3<T> const &velocity_initial,
-                         T time,
-                         T deltatime,
-                         derivative<T> const &d) const;
+  derivative<T> evaluate(state<T> const &currentstate, T time) const;
+  derivative<T> evaluate(state<T> const &currentstate, T time, T delta_time, derivative<T> const &thisderivative) const;
 };
 
 }
