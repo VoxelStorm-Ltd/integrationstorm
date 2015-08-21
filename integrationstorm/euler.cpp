@@ -1,6 +1,6 @@
 #include "euler.h"
-//#include "state.h"
-//#include "derivative.h"
+#include "state.h"
+#include "derivative.h"
 
 namespace integrationstorm {
 
