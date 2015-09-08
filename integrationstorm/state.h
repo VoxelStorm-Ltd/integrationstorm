@@ -1,7 +1,7 @@
 #ifndef INTEGRATIONSTORM_STATE_H_INCLUDED
 #define INTEGRATIONSTORM_STATE_H_INCLUDED
 
-#include "vmath.h"
+#include "vmath_forward_dec.h"
 
 namespace integrationstorm {
 
@@ -22,7 +22,7 @@ struct state {
   //Matrix4<T> world_to_body;                                                     // world to body coordinates matrix.
 
   // constant state
-  T mass;                                                                       // mass of the cube in kilograms.
+  T mass;                                                                       // mass of the object in kilograms.
   T mass_inv;                                                                   // inverse of the mass used to convert momentum to velocity.
   Vector3<T> inertia_tensor;                                                    // inertia tensor
   Vector3<T> inertia_tensor_inv;                                                // inverse inertia tensor used to convert angular momentum to angular velocity.
