@@ -21,10 +21,10 @@ void base<T, DerivedT>::set_force_func(std::function<void(state<T> const&, T, Ve
 }
 
 template<typename T, template<typename> class DerivedT>
-void base<T, DerivedT>::get_force(state<T> const &thisstate,
-                                  T time,
-                                  Vector3<T> &force,
-                                  Vector3<T> &torque) const {
+void base<T, DerivedT>::get_force_and_torque(state<T> const &thisstate,
+                                             T time,
+                                             Vector3<T> &force,
+                                             Vector3<T> &torque) const {
   /// Execute the force function
   this->force_func(thisstate, time, force, torque);
 }

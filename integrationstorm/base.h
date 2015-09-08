@@ -23,7 +23,7 @@ protected:
 public:
   void set_force_func(std::function<void(state<T> const&, T, Vector3<T>&, Vector3<T>&)> new_func);
 
-  void get_force(state<T> const &thisstate, T time, Vector3<T> &force, Vector3<T> &torque) const;
+  void get_force_and_torque(state<T> const &thisstate, T time, Vector3<T> &force, Vector3<T> &torque) const;
 
   void integrate(state<T> &thisstate, T time, T delta_time) const;
 };

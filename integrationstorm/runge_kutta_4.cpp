@@ -40,7 +40,7 @@ derivative<T> runge_kutta_4<T>::evaluate(state<T> const &currentstate, T time) c
   derivative<T> output;
   output.velocity = currentstate.velocity;
   output.spin     = currentstate.spin;
-  this->get_force(currentstate, time, output.force, output.torque);
+  this->get_force_and_torque(currentstate, time, output.force, output.torque);
   return output;
 }
 
@@ -62,7 +62,7 @@ derivative<T> runge_kutta_4<T>::evaluate(state<T> const &currentstate,
   derivative<T> output;
   output.velocity = tempstate.velocity;
   output.spin     = tempstate.spin;
-  this->get_force(tempstate, time + delta_time, output.force, output.torque);
+  this->get_force_and_torque(tempstate, time + delta_time, output.force, output.torque);
   return output;
 }
 

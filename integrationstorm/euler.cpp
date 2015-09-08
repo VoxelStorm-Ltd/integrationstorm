@@ -34,7 +34,7 @@ derivative<T> euler<T>::evaluate(state<T> const &currentstate,
   derivative<T> output;
   output.velocity = currentstate.velocity;
   output.spin     = currentstate.spin;
-  this->get_force(currentstate, time + delta_time, output.force, output.torque);
+  this->get_force_and_torque(currentstate, time + delta_time, output.force, output.torque);
   return output;
 }
 
