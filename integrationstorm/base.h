@@ -1,6 +1,7 @@
 #ifndef INTEGRATIONSTORM_BASE_H_INCLUDED
 #define INTEGRATIONSTORM_BASE_H_INCLUDED
 
+#include <functional>
 #include "vmath_forward_dec.h"
 
 namespace integrationstorm {

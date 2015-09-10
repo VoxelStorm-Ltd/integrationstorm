@@ -1,4 +1,5 @@
 #include "runge_kutta_fehlberg_54.h"
+#include "vmath.h"
 
 namespace integrationstorm {
 
