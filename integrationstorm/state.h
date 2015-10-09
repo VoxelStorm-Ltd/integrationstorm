@@ -22,15 +22,27 @@ struct state {
   //Matrix4<T> world_to_body;                                                     // world to body coordinates matrix.
 
   // constant state
-  T mass;                                                                       // mass of the object in kilograms.
-  T mass_inv;                                                                   // inverse of the mass used to convert momentum to velocity.
-  Vector3<T> inertia_tensor;                                                    // inertia tensor
-  Vector3<T> inertia_tensor_inv;                                                // inverse inertia tensor used to convert angular momentum to angular velocity.
+  T mass = 1.0f;                                                                // total mass of the rigid body, in kg, equivalent of _airplane._model._body._totalMass in yasim
+  T mass_inv = 1.0f;                                                            // inverse of the mass used to convert momentum to velocity.
+  Vector3<T> centre_of_gravity;                                                 // centre of gravity of the rigid body, equivalent of _airplane._model._body._cg in yasim
+  ///Vector3<T> inertia_tensor;                                                    // inertia tensor
+  ///Vector3<T> inertia_tensor_inv;                                                // inverse inertia tensor used to convert angular momentum to angular velocity.
+  Matrix3<T> inertia_tensor;                                                    // inertia tensor, equivalent of _airplane._model._body._tI in yasim
+  Matrix3<T> inertia_tensor_inv;                                                // cached value of inverted inertia tensor, equivalent of _airplane._model._body._invI in yasim
+
+  /// ///
+  // TODO
+  float _gyro[3];
+
+  // Externally determined quantities
+  float _force[3];
+  float _torque[3];
+  float _spin[3];
+
 
   void recalculate();
 
 	// TODO: interpolate
-
 };
 
 }

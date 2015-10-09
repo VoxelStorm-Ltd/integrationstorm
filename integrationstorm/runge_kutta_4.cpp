@@ -1,7 +1,7 @@
 #include "runge_kutta_4.h"
-#include "vmath.h"
+//#include "vmath.h"
 //#include "derivative.h"
-#include "state.h"
+//#include "state.h"
 
 namespace integrationstorm {
 
