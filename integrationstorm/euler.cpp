@@ -1,7 +1,7 @@
 #include "euler.h"
 //#include "vmath.h"
-//#include "state.h"
-//#include "derivative.h"
+#include "state.h"
+#include "derivative.h"
 
 namespace integrationstorm {
 

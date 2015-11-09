@@ -1,6 +1,8 @@
 #ifndef INTEGRATIONSTORM_DERIVATIVE_H_INCLUDED
 #define INTEGRATIONSTORM_DERIVATIVE_H_INCLUDED
 
+#include "vmath.h"
+
 namespace integrationstorm {
 
 template<typename T>
