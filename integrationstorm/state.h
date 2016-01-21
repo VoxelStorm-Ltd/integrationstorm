@@ -42,7 +42,7 @@ struct state {
 
   void recalculate();
 
-	// TODO: interpolate
+  // TODO: interpolate
 };
 
 }

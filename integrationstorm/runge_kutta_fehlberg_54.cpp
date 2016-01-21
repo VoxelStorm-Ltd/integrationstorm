@@ -23,7 +23,7 @@ void runge_kutta_fehlberg_54<T>::integrate(Vector3<T> &position,
   /// also see http://people.sc.fsu.edu/~jburkardt/cpp_src/rkf45/rkf45.html
   T const finaltime = time + delta_time;
 
-  // void rk45(float f(float, float), float* t, float* x, float delta_time, float* epsilon)
+  // void rk45(float f(float, float), float *t, float *x, float delta_time, float *epsilon)
   Vector3<T> const temp1 = this->get_acceleration(position,
                                                   velocity,                   finaltime) * delta_time;
   Vector3<T> const temp2 = this->get_acceleration(position + temp1 * c21,
