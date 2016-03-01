@@ -16,15 +16,15 @@ base<T, DerivedT>::~base() {
 }
 
 template<typename T, template<typename> class DerivedT>
-void base<T, DerivedT>::set_force_func(std::function<void(state<T> const&, T, Vector3<T>&, Vector3<T>&)> new_func) {
+void base<T, DerivedT>::set_force_func(std::function<void(state<T> const&, T, vec3<T>&, vec3<T>&)> new_func) {
   force_func = new_func;
 }
 
 template<typename T, template<typename> class DerivedT>
 void base<T, DerivedT>::get_force_and_torque(state<T> const &thisstate,
                                              T time,
-                                             Vector3<T> &force,
-                                             Vector3<T> &torque) const {
+                                             vec3<T> &force,
+                                             vec3<T> &torque) const {
   /// Execute the force function
   this->force_func(thisstate, time, force, torque);
 }
