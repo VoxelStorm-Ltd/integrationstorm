@@ -20,15 +20,15 @@ struct state {
   vec3<T> velocity;                                                             // velocity in meters per second (calculated from momentum).
   quat<T> spin;                                                                 // quaternion rate of change in orientation.
   vec3<T> angular_velocity;                                                     // angular velocity (calculated from angularMomentum).
-  //mat4<T> body_to_world;                                                      // body to world coordinates matrix.
-  //mat4<T> world_to_body;                                                      // world to body coordinates matrix.
+  //mat4<T> body_to_world;                                                        // body to world coordinates matrix.
+  //mat4<T> world_to_body;                                                        // world to body coordinates matrix.
 
   // constant state
   T mass = 1.0f;                                                                // total mass of the rigid body, in kg, equivalent of _airplane._model._body._totalMass in yasim
   T mass_inv = 1.0f;                                                            // inverse of the mass used to convert momentum to velocity.
   vec3<T> centre_of_gravity;                                                    // centre of gravity of the rigid body, equivalent of _airplane._model._body._cg in yasim
-  ///vec3<T> inertia_tensor;                                                    // inertia tensor
-  ///vec3<T> inertia_tensor_inv;                                                // inverse inertia tensor used to convert angular momentum to angular velocity.
+  ///vec3<T> inertia_tensor;                                                      // inertia tensor
+  ///vec3<T> inertia_tensor_inv;                                                  // inverse inertia tensor used to convert angular momentum to angular velocity.
   mat3<T> inertia_tensor;                                                       // inertia tensor, equivalent of _airplane._model._body._tI in yasim
   mat3<T> inertia_tensor_inv;                                                   // cached value of inverted inertia tensor, equivalent of _airplane._model._body._invI in yasim
 
