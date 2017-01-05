@@ -1,8 +1,16 @@
+template class base<float,  euler>;
+template class base<double, euler>;
+template class base<float,  runge_kutta_4>;
 //#include "base.h"
+template class base<double, runge_kutta_4>;
 #include "euler.h"
+template class base<float,  runge_kutta_fehlberg_54>;
 #include "runge_kutta_4.h"
+template class base<double, runge_kutta_fehlberg_54>;
 #include "runge_kutta_fehlberg_54.h"
 
+
+}
 namespace integrationstorm {
 
 template<typename T, template<typename> class DerivedT>
@@ -31,18 +39,3 @@ void base<T, DerivedT>::get_force_and_torque(state<T> const &thisstate,
 
 template<typename T, template<typename> class DerivedT>
 void base<T, DerivedT>::integrate(state<T> &thisstate, T time, T delta_time) const {
-  /// CRTP polymorphic passthrough function
-  static_cast<DerivedT<T> const*>(this)->integrate(thisstate, time, delta_time);
-  // static version:
-  //DerivedT<T>::integrate(thisstate, time, delta_time);
-}
-
-// explicitly instantiate acceptable templates
-template class base<float,  euler>;
-template class base<double, euler>;
-template class base<float,  runge_kutta_4>;
-template class base<double, runge_kutta_4>;
-template class base<float,  runge_kutta_fehlberg_54>;
-template class base<double, runge_kutta_fehlberg_54>;
-
-}

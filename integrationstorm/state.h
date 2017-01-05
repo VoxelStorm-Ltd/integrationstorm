@@ -47,6 +47,3 @@ struct state {
   // TODO: interpolate
 };
 
-}
-
-#endif // INTEGRATIONSTORM_STATE_H_INCLUDED
