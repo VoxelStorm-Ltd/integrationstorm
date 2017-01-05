@@ -18,6 +18,7 @@ protected:
                                                                               vec3<T> &torque        __attribute__((__unused__))){};
 
 protected:
+  base();                                                                       // this base class is not to be instantiated
   ~base();                                                                      // prevent destruction through base pointer
 
 public:

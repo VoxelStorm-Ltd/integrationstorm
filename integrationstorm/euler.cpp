@@ -21,6 +21,7 @@ void euler<T>::integrate(state<T> &thisstate, T time, T delta_time) const {
   derivative<T> const d = evaluate(thisstate, time, delta_time);
   thisstate.position         += d.velocity * delta_time;
   thisstate.momentum         += d.force    * delta_time;
+  thisstate.orientation      += d.spin     * delta_time;
   thisstate.angular_momentum += d.torque   * delta_time;
 
   thisstate.recalculate();
