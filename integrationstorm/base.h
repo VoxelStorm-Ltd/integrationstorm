@@ -14,8 +14,8 @@ protected:
   // pointer to function that calculates force and torque at a given state and time
   std::function<void(state<T> const&, T, vec3<T>&, vec3<T>&)> force_func = [](state<T> const &thisstate [[maybe_unused]],
                                                                               T time                    [[maybe_unused]],
-                                                                              vec3<T> &force         [[maybe_unused]],
-                                                                              vec3<T> &torque        [[maybe_unused]]){};
+                                                                              vec3<T> &force            [[maybe_unused]],
+                                                                              vec3<T> &torque           [[maybe_unused]]){};
 
 protected:
   base();                                                                       // this base class is not to be instantiated
