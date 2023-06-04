@@ -10,9 +10,9 @@ Not actively maintained, and provided without support, in the hope that it may b
 - [VectorStorm](https://github.com/Armchair-Software/vectorstorm) vector maths library
 
 ## Integration algorithms provided:
-- Euler
-- Runge Kutta 4
-- Runge Kutta Fehlberg 54
+- [Euler](https://en.wikipedia.org/wiki/Euler_method)
+- [Runge Kutta 4](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods)
+- [Runge Kutta Fehlberg 54](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta%E2%80%93Fehlberg_method)
 
 ### Integrator functions
 ```cpp
