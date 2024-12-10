@@ -1,5 +1,4 @@
-#ifndef INTEGRATIONSTORM_BASE_H_INCLUDED
-#define INTEGRATIONSTORM_BASE_H_INCLUDED
+#pragma once
 
 #include <functional>
 #include "vectorstorm/vector/vector3_forward.h"
@@ -30,5 +29,3 @@ public:
 };
 
 }
-
-#endif // INTEGRATIONSTORM_BASE_H_INCLUDED

@@ -1,5 +1,4 @@
-#ifndef INTEGRATIONSTORM_STATE_H_INCLUDED
-#define INTEGRATIONSTORM_STATE_H_INCLUDED
+#pragma once
 
 #include "vectorstorm/vector/vector3.h"
 #include "vectorstorm/matrix/matrix3.h"
@@ -48,5 +47,3 @@ struct state {
 };
 
 }
-
-#endif // INTEGRATIONSTORM_STATE_H_INCLUDED

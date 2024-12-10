@@ -1,5 +1,4 @@
-#ifndef INTEGRATIONSTORM_RUNGE_KUTTA_4_H_INCLUDED
-#define INTEGRATIONSTORM_RUNGE_KUTTA_4_H_INCLUDED
+#pragma once
 
 #include "base.h"
 #include "derivative.h"
@@ -21,5 +20,3 @@ private:
 };
 
 }
-
-#endif // INTEGRATIONSTORM_RUNGE_KUTTA_4_H_INCLUDED

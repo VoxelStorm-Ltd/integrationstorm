@@ -1,5 +1,4 @@
-#ifndef INTEGRATIONSTORM_EULER_H_INCLUDED
-#define INTEGRATIONSTORM_EULER_H_INCLUDED
+#pragma once
 
 #include "base.h"
 
@@ -21,5 +20,3 @@ private:
 };
 
 }
-
-#endif // INTEGRATIONSTORM_EULER_H_INCLUDED

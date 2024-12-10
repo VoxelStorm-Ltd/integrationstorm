@@ -1,5 +1,4 @@
-#ifndef INTEGRATIONSTORM_DERIVATIVE_H_INCLUDED
-#define INTEGRATIONSTORM_DERIVATIVE_H_INCLUDED
+#pragma once
 
 #include "vectorstorm/vector/vector3.h"
 #include "vectorstorm/quat/quat.h"
@@ -16,5 +15,3 @@ struct derivative {
 };
 
 }
-
-#endif // INTEGRATIONSTORM_DERIVATIVE_H_INCLUDED
