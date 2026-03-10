@@ -1,6 +1,6 @@
 #include "runge_kutta_4.h"
-//#include "vmath.h"
 //#include "derivative.h"
+//#include "vmath.h"
 #include "state.h"
 
 namespace integrationstorm {
@@ -19,14 +19,14 @@ template<typename T>
 void runge_kutta_4<T>::integrate(state<T> &thisstate, T time, T delta_time) const {
   /// Integrate physics state forward by dt seconds.
   /// Uses an RK4 integrator to numerically integrate with error O(5).
-  derivative<T> const a = evaluate(thisstate, time);
-  derivative<T> const b = evaluate(thisstate, time, delta_time * static_cast<T>(0.5), a);
-  derivative<T> const c = evaluate(thisstate, time, delta_time * static_cast<T>(0.5), b);
-  derivative<T> const d = evaluate(thisstate, time, delta_time, c);
+  derivative<T> const a{evaluate(thisstate, time)};
+  derivative<T> const b{evaluate(thisstate, time, delta_time * static_cast<T>(0.5), a)};
+  derivative<T> const c{evaluate(thisstate, time, delta_time * static_cast<T>(0.5), b)};
+  derivative<T> const d{evaluate(thisstate, time, delta_time, c)};
 
-  T constexpr oneoversix = static_cast<T>(1.0) / static_cast<T>(6.0);
-  T constexpr two = static_cast<T>(2.0);
-  T const oneoversixtime = oneoversix * delta_time;
+  T constexpr oneoversix{static_cast<T>(1.0) / static_cast<T>(6.0)};
+  T constexpr two{static_cast<T>(2.0)};
+  T const oneoversixtime{oneoversix * delta_time};
   thisstate.position         += (a.velocity + ((b.velocity + c.velocity) * two) + d.velocity) * oneoversixtime;
   thisstate.momentum         += (a.force    + ((b.force    + c.force   ) * two) + d.force   ) * oneoversixtime;
   thisstate.orientation      += (a.spin     + ((b.spin     + c.spin    ) * two) + d.spin    ) * oneoversixtime;
@@ -71,4 +71,4 @@ derivative<T> runge_kutta_4<T>::evaluate(state<T> const &currentstate,
 template class runge_kutta_4<float>;
 template class runge_kutta_4<double>;
 
-}
+} // namespace integrationstorm

@@ -1,7 +1,7 @@
 #include "euler.h"
 //#include "vmath.h"
-#include "state.h"
 #include "derivative.h"
+#include "state.h"
 
 namespace integrationstorm {
 
@@ -18,7 +18,7 @@ euler<T>::~euler() {
 template<typename T>
 void euler<T>::integrate(state<T> &thisstate, T time, T delta_time) const {
   /// Very simplistic test integrator
-  derivative<T> const d = evaluate(thisstate, time, delta_time);
+  derivative<T> const d{evaluate(thisstate, time, delta_time)};
   thisstate.position         += d.velocity * delta_time;
   thisstate.momentum         += d.force    * delta_time;
   thisstate.orientation      += d.spin     * delta_time;
@@ -43,4 +43,4 @@ derivative<T> euler<T>::evaluate(state<T> const &currentstate,
 template class euler<float>;
 template class euler<double>;
 
-}
+} // namespace integrationstorm
